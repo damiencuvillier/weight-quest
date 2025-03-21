@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://kpkjr7esspnf"]
 
-[ext_resource type="Script" path="res://scenes/choice.gd" id="1_ehobt"]
+[ext_resource type="Script" uid="uid://btpgdo7hnv75w" path="res://scenes/choice.gd" id="1_ehobt"]
 [ext_resource type="Texture2D" uid="uid://kmwnay4dinfn" path="res://assets/Chocolate - Retro Textbox 01/textbox.png" id="2_0gp37"]
 [ext_resource type="Texture2D" uid="uid://frnqr5so351k" path="res://assets/illustrations/blackBG.jpeg" id="2_76loj"]
 
