@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://kpkjr7esspnf"]
+[gd_scene load_steps=4 format=3 uid="uid://kpkjr7esspnf"]
+
+[ext_resource type="Script" path="res://scenes/choice.gd" id="1_ehobt"]
+[ext_resource type="Texture2D" uid="uid://kmwnay4dinfn" path="res://assets/Chocolate - Retro Textbox 01/textbox.png" id="2_0gp37"]
+[ext_resource type="Texture2D" uid="uid://frnqr5so351k" path="res://assets/illustrations/blackBG.jpeg" id="2_76loj"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -7,3 +11,47 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ehobt")
+
+[node name="BlackBg" type="Sprite2D" parent="."]
+position = Vector2(577.5, 324.5)
+scale = Vector2(3.83667, 3.875)
+texture = ExtResource("2_76loj")
+
+[node name="Textbox" type="Sprite2D" parent="."]
+position = Vector2(593, 544)
+scale = Vector2(0.640351, 0.640351)
+texture = ExtResource("2_0gp37")
+
+[node name="DialogueBox Panel" type="Panel" parent="Textbox"]
+anchors_preset = -1
+anchor_top = 0.0175439
+offset_left = -526.0
+offset_top = -100.0
+offset_right = 475.0
+offset_bottom = 95.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Dialoguetext RichTextLabel" type="RichTextLabel" parent="Textbox/DialogueBox Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 999.0
+offset_bottom = 192.0
+
+[node name="ChoiceContainer VBoxContainer" type="VBoxContainer" parent="Textbox/DialogueBox Panel"]
+layout_mode = 0
+offset_left = 49.6987
+offset_top = 46.589
+offset_right = 952.699
+offset_bottom = 173.589
+alignment = 1
+
+[node name="Choice1 Button" type="Button" parent="Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer"]
+layout_mode = 2
+
+[node name="Choice2 Button" type="Button" parent="Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer"]
+layout_mode = 2
+
+[node name="Choice3 Button" type="Button" parent="Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer"]
+layout_mode = 2
