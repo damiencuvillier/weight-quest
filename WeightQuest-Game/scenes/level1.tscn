@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dtrbka1ef726o" path="res://scenes/killzone.tscn" id="7_6dial"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="8_7nomh"]
 [ext_resource type="PackedScene" uid="uid://dqnaqj8yb6hwd" path="res://scenes/player.tscn" id="9_1s4pk"]
-[ext_resource type="Script" path="res://scripts/next_level.gd" id="10_d3jkd"]
+[ext_resource type="Script" uid="uid://b0ehrfdicp503" path="res://scripts/next_level.gd" id="10_d3jkd"]
 [ext_resource type="Texture2D" uid="uid://dbcc0ylhbquej" path="res://assets/sprites/flag_end.png" id="11_u3awl"]
 
 [sub_resource type="Animation" id="Animation_apgth"]
@@ -3434,6 +3434,12 @@ limit_bottom = 120
 limit_smoothed = true
 position_smoothing_enabled = true
 
+[node name="LevelTimer" type="Timer" parent="Player"]
+
+[node name="TimeLabel" type="Label" parent="Player"]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="NextLevel" type="Area2D" parent="."]
 position = Vector2(831, -35)
 collision_mask = 2
@@ -3448,5 +3454,6 @@ texture = ExtResource("11_u3awl")
 position = Vector2(10.5, -23)
 shape = SubResource("RectangleShape2D_u3awl")
 
+[connection signal="timeout" from="Player/LevelTimer" to="Player" method="_on_level_timer_timeout"]
 [connection signal="area_entered" from="NextLevel" to="NextLevel" method="_on_area_entered"]
 [connection signal="body_entered" from="NextLevel" to="NextLevel" method="_on_body_entered"]

@@ -26,6 +26,7 @@ texture = ExtResource("2_0gp37")
 [node name="DialogueBox Panel" type="Panel" parent="Textbox"]
 anchors_preset = -1
 anchor_top = 0.0175439
+anchor_bottom = 0.0175439
 offset_left = -526.0
 offset_top = -100.0
 offset_right = 475.0
