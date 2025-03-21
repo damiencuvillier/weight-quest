@@ -54,19 +54,19 @@ func update_sizes():
 # Mapping spécifique pour chaque stat
 const STAT_TEXTURES := {
 	"Energy": [
-		{ "threshold": 33, "texture": preload("res://assets/hbp_red.png") },
-		{ "threshold": 66, "texture": preload("res://assets/hbp_orange.png") },
-		{ "threshold": 100, "texture": preload("res://assets/hbp_green.png") },
+		{ "threshold": 33, "texture": preload("res://assets/Nazim/hbp_red.png") },
+		{ "threshold": 66, "texture": preload("res://assets/Nazim/hbp_orange.png") },
+		{ "threshold": 100, "texture": preload("res://assets/Nazim/hbp_green.png") },
 	],
 	"Weight": [
-		{ "threshold": 33, "texture": preload("res://assets/hbp_red.png") },
-		{ "threshold": 66, "texture": preload("res://assets/hbp_orange.png") },
-		{ "threshold": 100, "texture": preload("res://assets/hbp_green.png") },
+		{ "threshold": 33, "texture": preload("res://assets/Nazim/hbp_red.png") },
+		{ "threshold": 66, "texture": preload("res://assets/Nazim/hbp_orange.png") },
+		{ "threshold": 100, "texture": preload("res://assets/Nazim/hbp_green.png") },
 	],
 		"MentalHealth": [
-		{ "threshold": 33, "texture": preload("res://assets/hbp_red.png") },
-		{ "threshold": 66, "texture": preload("res://assets/hbp_orange.png") },
-		{ "threshold": 100, "texture": preload("res://assets/hbp_green.png") },
+		{ "threshold": 33, "texture": preload("res://assets/Nazim/hbp_red.png") },
+		{ "threshold": 66, "texture": preload("res://assets/Nazim/hbp_orange.png") },
+		{ "threshold": 100, "texture": preload("res://assets/Nazim/hbp_green.png") },
 	]
 }
 

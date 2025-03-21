@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://pofl75gurujw"
-path="res://.godot/imported/hbp_under.png-0ab6039d24bb425cf56ada2ea83e369f.ctex"
+path="res://.godot/imported/hbp_under.png-6e7b59621fa121faf7be63125cf1e05b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/hbp_under.png"
-dest_files=["res://.godot/imported/hbp_under.png-0ab6039d24bb425cf56ada2ea83e369f.ctex"]
+source_file="res://assets/Nazim/hbp_under.png"
+dest_files=["res://.godot/imported/hbp_under.png-6e7b59621fa121faf7be63125cf1e05b.ctex"]
 
 [params]
 

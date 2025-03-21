@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dchldi4oyb40d"
-path="res://.godot/imported/1.Energy.png-2336485a879fa35c5bc0914f0a0daf44.ctex"
+path="res://.godot/imported/1.Energy.png-c205bff2a038f84564793aed01da9ea6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/1.Energy.png"
-dest_files=["res://.godot/imported/1.Energy.png-2336485a879fa35c5bc0914f0a0daf44.ctex"]
+source_file="res://assets/Nazim/1.Energy.png"
+dest_files=["res://.godot/imported/1.Energy.png-c205bff2a038f84564793aed01da9ea6.ctex"]
 
 [params]
 
