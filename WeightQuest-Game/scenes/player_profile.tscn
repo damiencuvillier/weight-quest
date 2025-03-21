@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://ceny0wv7bbufi"]
+
+[ext_resource type="Texture2D" uid="uid://pofl75gurujw" path="res://assets/hbp_under.png" id="1_bnc1k"]
+[ext_resource type="Script" uid="uid://dkiuvdfc5xx72" path="res://scenes/liste_stats.gd" id="1_nvck6"]
+[ext_resource type="Texture2D" uid="uid://dchldi4oyb40d" path="res://assets/1.Energy.png" id="2_j5jco"]
+[ext_resource type="FontFile" uid="uid://m4kefosdgugi" path="res://assets/PressStart2P-Regular.ttf" id="2_kwc6j"]
+[ext_resource type="Texture2D" uid="uid://dghip7g53c702" path="res://assets/hbp_red.png" id="2_nvck6"]
+[ext_resource type="Texture2D" uid="uid://cw7i3ue3afygd" path="res://assets/2.Weight.png" id="6_j5jco"]
+[ext_resource type="Texture2D" uid="uid://ogxtblerl273" path="res://assets/3.Mental.png" id="7_j5jco"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainerLeft" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainerRight" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainerRight"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Liste Stats" type="VBoxContainer" parent="HBoxContainer/VBoxContainerRight/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+script = ExtResource("1_nvck6")
+
+[node name="Energy" type="VBoxContainer" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/Energy"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_j5jco")
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/Energy"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kwc6j")
+theme_override_font_sizes/font_size = 40
+text = "Energie"
+horizontal_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/Energy"]
+custom_minimum_size = Vector2(460.8, 32.4)
+layout_mode = 2
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_bnc1k")
+texture_progress = ExtResource("2_nvck6")
+
+[node name="Weight" type="VBoxContainer" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/Weight"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_j5jco")
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/Weight"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kwc6j")
+theme_override_font_sizes/font_size = 40
+text = "Equilibre"
+horizontal_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/Weight"]
+custom_minimum_size = Vector2(460.8, 32.4)
+layout_mode = 2
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_bnc1k")
+texture_progress = ExtResource("2_nvck6")
+
+[node name="MentalHealth" type="VBoxContainer" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/MentalHealth"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_j5jco")
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/MentalHealth"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kwc6j")
+theme_override_font_sizes/font_size = 40
+text = "Santé mentale"
+horizontal_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/MentalHealth"]
+custom_minimum_size = Vector2(460.8, 32.4)
+layout_mode = 2
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_bnc1k")
+texture_progress = ExtResource("2_nvck6")
