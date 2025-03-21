@@ -1,6 +1,8 @@
-# First game in Godot
-Project files for our video on making your first game in Godot.
+# Weight Quest
 
-Check out the videos on the [Brackeys YouTube Channel](http://youtube.com/brackeys).
 
-Everything is free to use, also commercially (public domain).
+
+### Ref
+
+* [Brackeys YouTube Channel](http://youtube.com/brackeys).
+
