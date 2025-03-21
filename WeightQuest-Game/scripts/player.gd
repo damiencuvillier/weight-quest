@@ -3,51 +3,13 @@ extends CharacterBody2D
 
 var SPEED = 130.0
 var JUMP_VELOCITY = -10.0
-var TIME_TO_COMPLETE = 360  # Total time to complete the level in seconds
-@onready var level_timer = $LevelTimer
-@onready var time_label  = $TimeLabel
+var TIME_TO_COMPLETE = 5  # Total time to complete the level in seconds
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animated_sprite = $AnimatedSprite2D
 
 var is_time_up = false  # Track if time has run out
-
-
-func _process(delta):
-	if time_label != null:  # Only update the label if it exists
-		time_label.text = "Time: " + str(int(level_timer.time_left)) + "s"
-
-func _ready():
-	if level_timer == null:
-		print("Error: LevelTimer node not found!")
-		return
-
-	# Start the level timer when the player is ready
-	level_timer.wait_time = TIME_TO_COMPLETE
-	level_timer.start()
-
-func _on_level_timer_timeout():
-	if not is_time_up:
-		# Trigger the failure logic when time runs out
-		print("Time's up! You failed!")
-		Engine.time_scale = 0.5  # Slow down time
-		$CollisionShape2D.queue_free()  # Remove the player's collision
-		is_time_up = true  # Mark that time has run out
-		level_timer.wait_time = 2.0  # Set a delay before transitioning (e.g., 2 seconds)
-		level_timer.start()  # Restart the timer for the delay
-	else:
-		# Transition to the next scene after the delay
-		Engine.time_scale = 1.0
-		go_to_next_scene()
-
-func go_to_next_scene():
-	# Replace "res://next_scene.tscn" with the path to your next scene
-	var next_scene_path = "res://next_scene.tscn"
-	if ResourceLoader.exists(next_scene_path):
-		get_tree().change_scene_to_file(next_scene_path)
-	else:
-		print("Next scene not found!")
 
 func _playerAbility(Energy, Weight, MentalHealth):
 	# Normalize the inputs to a range of 0 to 1
@@ -119,3 +81,35 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+@onready var timer_ui = $"../TimerUi"
+func _ready():
+	print("TimerUI node:", timer_ui)
+	if timer_ui == null:
+		print("Error: TimerUI node not found!")
+		return
+	# Start the timer with the MentalHealth value
+	timer_ui.start_timer(TIME_TO_COMPLETE)  # Pass MentalHealth to the timer
+	timer_ui.connect("time_up", Callable(self, "_on_time_up"))
+	timer_ui.connect("transition_to_next_scene", Callable(self, "_on_transition_to_next_scene"))
+
+func _on_time_up():
+	# Trigger the failure logic when time runs out
+	print("Time's up! You failed!")
+	Engine.time_scale = 0.5  # Slow down time
+	$CollisionShape2D.queue_free()  # Remove the player's collision
+	timer_ui.show_game_over_message()
+
+func _on_transition_to_next_scene():
+	# Transition to the next scene
+	Engine.time_scale = 1.0
+	go_to_next_scene()
+	
+func go_to_next_scene():
+	# Replace "res://next_scene.tscn" with the path to your next scene
+	var next_scene_path = "res://scenes/level2.tscn"
+	if ResourceLoader.exists(next_scene_path):
+		get_tree().change_scene_to_file(next_scene_path)
+	else:
+		print("Next scene not found!")
