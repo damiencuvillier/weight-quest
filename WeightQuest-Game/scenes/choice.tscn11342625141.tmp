@@ -64,6 +64,5 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 23
 
 [node name="Choice3 Button" type="Button" parent="Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer"]
-visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 23

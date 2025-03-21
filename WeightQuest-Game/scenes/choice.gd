@@ -1,105 +1,156 @@
 extends Control
+
+# ✅ VARIABLES & RÉFÉRENCES UI
 @onready var dialogue_label: Panel = $"Textbox/DialogueBox Panel"
 @onready var dialoguetext_rich_text_label: RichTextLabel = $"Textbox/DialogueBox Panel/Dialoguetext RichTextLabel"
 @onready var choix_container: VBoxContainer = $"Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer"
 @onready var choice_1_button: Button = $"Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer/Choice1 Button"
 @onready var choice_2_button: Button = $"Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer/Choice2 Button"
 @onready var choice_3_button: Button = $"Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer/Choice3 Button"
+@onready var black_bg: Sprite2D = %BlackBg
 
-var texte_complet = "Nous sommes un lundi matin. Vous vous réveillez doucement après avoir éteint votre réveil..."
-var texte_affiche = ""
-var index = 0
-var affichage_termine = false
-var dialogue_affiche = false  # ✅ Empêche la répétition du texte initial
-var interrompre_affichage = false  
+# ✅ VARIABLES DE JEU
 var choix_joueur: int = 0
-var textes_choix = ["Vous prenez un bon petit déjeuner et vous vous sentez prêt pour la journée.","Vous faites un petit exercice physique et vous vous sentez réveillé.", "Vous sortez pour un gros exercice physique et sentez l'air frais sur votre visage."]  # Liste globale pour stocker les textes associés aux choix
+var affichage_termine = false
+var interrompre_affichage = false  
+var index_texte = 0  # Suivi du texte actuellement affiché
+var texte_scene = []
+var current_scene = "reveil"
+var scene = {}  # Contiendra les données de la scène
 
+# ✅ INITIALISATION
 func _ready():
-	choix_container.hide()
-	if not dialogue_affiche:
-		dialogue_affiche = true
-		afficher_texte_progressivement(texte_complet)
+	afficher_scene(current_scene)
 
-func afficher_texte_progressivement(texte):
-	texte_affiche = ""
-	index = 0
+# ✅ AFFICHAGE DES SCÈNES
+func afficher_scene(scene_name: String):
+	if not scenes_data.has(scene_name):
+		print("Erreur : scène non trouvée :", scene_name)
+		return
+	
+	current_scene = scene_name
+	scene = scenes_data[scene_name]
+
+	# Charger l'image de fond
+	var background_path = "res://assets/illustrations/blackBG.jpeg"
+	if scene_name == "petit_dejeuner":
+		background_path = "res://assets/illustrations/dejeuner.webp"
+	elif scene_name == "reveil":
+		background_path = "res://assets/illustrations/reveil.webp"
+	
+	black_bg.texture = load(background_path) as Texture2D
+	ajuster_taille_background()
+
+	# Récupérer les textes et afficher le premier
+	texte_scene = scene.get("texte", [])
+	index_texte = 0
+	if texte_scene.size() > 0:
+		afficher_texte_progressivement(texte_scene[index_texte])
+
+# ✅ AFFICHAGE PROGRESSIF DU TEXTE
+func afficher_texte_progressivement(texte: String):
 	affichage_termine = false
-	interrompre_affichage = false  # ✅ Réinitialisation
-	dialoguetext_rich_text_label.text = ""  
+	interrompre_affichage = false  
+	dialoguetext_rich_text_label.text = ""
+	var texte_affiche = ""
 
-	while index < texte.length():
-		if interrompre_affichage:  # ✅ Si on doit interrompre, on affiche tout de suite le texte complet
-			print("affichage interrompu")
+	for i in range(texte.length()):
+		if interrompre_affichage:
 			dialoguetext_rich_text_label.text = texte
-			break  # ✅ On sort de la boucle
-		
-		texte_affiche += texte[index]
+			break  
+
+		texte_affiche += texte[i]
 		dialoguetext_rich_text_label.text = texte_affiche
-		index += 1
 		await get_tree().create_timer(0.05).timeout
 
 	affichage_termine = true
 
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		if affichage_termine:
-			passer_au_texte_suivant()
-			afficher_choix("Prendre son petit déjeuner", "Faire un petit exercice")
-		else:
-			interrompre_affichage = true
-			dialoguetext_rich_text_label.text = texte_complet
-			affichage_termine = true
+# ✅ AFFICHAGE DES CHOIX
+func afficher_choix(choix_textes: Array):
+	deconnecter_choix()
 
-func passer_au_texte_suivant():
-	print("Passage au dialogue suivant")
+	# Cacher tous les boutons au départ
+	for bouton in [choice_1_button, choice_2_button, choice_3_button]:
+		bouton.hide()
 
-func afficher_choix(choix_1: String, choix_2: String, choix_3: String = ""):
-	# ✅ Assigner les textes aux boutons
-	choice_1_button.text = choix_1
-	choice_2_button.text = choix_2
-	choice_3_button.text = choix_3
+	# Afficher les choix disponibles
+	for i in range(min(choix_textes.size(), 3)):
+		var bouton = [choice_1_button, choice_2_button, choice_3_button][i]
+		bouton.text = choix_textes[i]["texte"]
+		print(choix_textes[i]["texte"])
+		bouton.show()
+		bouton.pressed.connect(_on_choice_pressed.bind(i + 1, choix_textes[i]["next"]))
 
-	# ✅ Toujours afficher les deux premiers boutons
-	choice_1_button.show()
-	choice_2_button.show()
-
-	# ✅ Afficher le 3e bouton uniquement s'il existe
-	if choix_3 != "":
-		choice_3_button.show()
-	else:
-		choice_3_button.hide()
-
-	# ✅ Afficher le conteneur des choix
 	choix_container.show()
 
-	# ✅ Déconnecter les anciens signaux
-	if choice_1_button.is_connected("pressed", Callable(self, "_set_choix_joueur").bind(1)):
-		choice_1_button.disconnect("pressed", Callable(self, "_set_choix_joueur").bind(1))
-	if choice_2_button.is_connected("pressed", Callable(self, "_set_choix_joueur").bind(2)):
-		choice_2_button.disconnect("pressed", Callable(self, "_set_choix_joueur").bind(2))
-	if choice_3_button.is_connected("pressed", Callable(self, "_set_choix_joueur").bind(3)):
-		choice_3_button.disconnect("pressed", Callable(self, "_set_choix_joueur").bind(3))
+# ✅ DÉCONNECTER LES ANCIENS CHOIX
+func deconnecter_choix():
+	for bouton in [choice_1_button, choice_2_button, choice_3_button]:
+		for conn in bouton.get_signal_connection_list("pressed"):
+			bouton.disconnect("pressed", conn.callable)
 
-	# ✅ Connecter les boutons directement à la fonction qui stocke le choix
-	choice_1_button.pressed.connect(func(): _set_choix_joueur(1))
-	choice_2_button.pressed.connect(func(): _set_choix_joueur(2))
-	if choix_3 != "":
-		choice_3_button.pressed.connect(func(): _set_choix_joueur(3))
-
-# ✅ Fonction pour stocker le choix du joueur et masquer les boutons
-func _set_choix_joueur(choix_index: int):
+# ✅ GESTION DU CHOIX DU JOUEUR
+func _on_choice_pressed(choix_index: int, next_scene: String):
 	choix_joueur = choix_index
 	choix_container.hide()
-	print("Le joueur a choisi :", choix_joueur)  # Débogage
+	afficher_scene(next_scene)
 
-func definir_textes_choix(nouveaux_textes: Array):
-	# ✅ Stocke les textes pour les futurs choix
-	textes_choix = nouveaux_textes
+# ✅ AJUSTER L'IMAGE DE FOND
+func ajuster_taille_background():
+	if black_bg.texture:
+		var texture_size = black_bg.texture.get_size()
+		var screen_size = get_viewport_rect().size
+		var final_scale = max(screen_size.x / texture_size.x, screen_size.y / texture_size.y)
 
-func afficher_resultat_choix():
-	if choix_joueur > 0 and choix_joueur <= textes_choix.size():
-		dialoguetext_rich_text_label.text = textes_choix[choix_joueur - 1]
+		black_bg.scale = Vector2(final_scale, final_scale)
+		black_bg.position = screen_size / 2
 
-	await get_tree().create_timer(2).timeout
-	# load next scene
+# ✅ GESTION DE L'ENTRÉE UTILISATEUR
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		if not affichage_termine:
+			interrompre_affichage = true
+		else:
+			if index_texte < texte_scene.size() - 1:
+				index_texte += 1
+				afficher_texte_progressivement(texte_scene[index_texte])
+			else:
+				# Tous les textes sont affichés, proposer les choix
+				if scene.has("choix") and scene["choix"].size() > 0:
+					afficher_choix(scene["choix"])
+				else:
+					print("Fin du scénario")
+
+# ✅ SCÉNARIO & TEXTES
+var scenes_data = {
+	"reveil": {
+		"texte": [
+			"Nous sommes un lundi matin.",
+			"Vous vous réveillez doucement après avoir éteint votre réveil...",
+			"Que voulez-vous faire maintenant ?"
+		],
+		"choix": [
+			{"texte": "Prendre un bon petit déjeuner", "next": "petit_dejeuner"},
+			{"texte": "Faire un petit exercice physique", "next": "exercice"},
+			{"texte": "Sortir pour un gros exercice physique", "next": "course"}
+		]
+	},
+	"petit_dejeuner": {
+		"texte": [
+			"Vous prenez un bon petit déjeuner.",
+			"Vous vous sentez prêt pour la journée."
+		]
+	},
+	"exercice": {
+		"texte": [
+			"Vous faites un petit exercice physique.",
+			"Vous vous sentez réveillé et plein d'énergie."
+		]
+	},
+	"course": {
+		"texte": [
+			"Vous sortez pour un gros exercice physique.",
+			"L'air frais sur votre visage vous revigore."
+		]
+	}
+}

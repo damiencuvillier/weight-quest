@@ -36,15 +36,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Dialoguetext RichTextLabel" type="RichTextLabel" parent="Textbox/DialogueBox Panel"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 4.0
-offset_right = 994.0
-offset_bottom = 187.0
-theme_override_font_sizes/normal_font_size = 27
-text = "Placeholder"
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 999.0
+offset_bottom = 192.0
 
 [node name="ChoiceContainer VBoxContainer" type="VBoxContainer" parent="Textbox/DialogueBox Panel"]
-visible = false
 layout_mode = 0
 offset_left = 49.6987
 offset_top = 46.589
@@ -53,17 +50,10 @@ offset_bottom = 173.589
 alignment = 1
 
 [node name="Choice1 Button" type="Button" parent="Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer"]
-visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 23
-text = "Placeholder"
 
 [node name="Choice2 Button" type="Button" parent="Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer"]
-visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 23
 
 [node name="Choice3 Button" type="Button" parent="Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer"]
-visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 23

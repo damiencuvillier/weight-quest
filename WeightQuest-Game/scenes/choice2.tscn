@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://kpkjr7esspnf"]
+[gd_scene load_steps=4 format=3 uid="uid://cp7spreio2yuy"]
 
-[ext_resource type="Script" path="res://scenes/choice.gd" id="1_ehobt"]
-[ext_resource type="Texture2D" uid="uid://kmwnay4dinfn" path="res://assets/Chocolate - Retro Textbox 01/textbox.png" id="2_0gp37"]
-[ext_resource type="Texture2D" uid="uid://frnqr5so351k" path="res://assets/illustrations/blackBG.jpeg" id="2_76loj"]
+[ext_resource type="Script" path="res://scenes/choice.gd" id="1_su4m5"]
+[ext_resource type="Texture2D" uid="uid://frnqr5so351k" path="res://assets/illustrations/blackBG.jpeg" id="2_itpa1"]
+[ext_resource type="Texture2D" uid="uid://kmwnay4dinfn" path="res://assets/Chocolate - Retro Textbox 01/textbox.png" id="3_g4dpt"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,18 +11,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ehobt")
+script = ExtResource("1_su4m5")
 
 [node name="BlackBg" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(577.5, 324.5)
 scale = Vector2(3.83667, 3.875)
-texture = ExtResource("2_76loj")
+texture = ExtResource("2_itpa1")
 
 [node name="Textbox" type="Sprite2D" parent="."]
 position = Vector2(593, 544)
 scale = Vector2(0.640351, 0.640351)
-texture = ExtResource("2_0gp37")
+texture = ExtResource("3_g4dpt")
 
 [node name="DialogueBox Panel" type="Panel" parent="Textbox"]
 anchors_preset = -1
@@ -64,6 +64,5 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 23
 
 [node name="Choice3 Button" type="Button" parent="Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer"]
-visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
