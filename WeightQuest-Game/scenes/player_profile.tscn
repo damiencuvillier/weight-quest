@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://ceny0wv7bbufi"]
+[gd_scene load_steps=9 format=3 uid="uid://ceny0wv7bbufi"]
 
-[ext_resource type="Texture2D" uid="uid://pofl75gurujw" path="res://assets/hbp_under.png" id="1_bnc1k"]
+[ext_resource type="Texture2D" uid="uid://pofl75gurujw" path="res://assets/Nazim/hbp_under.png" id="1_bnc1k"]
+[ext_resource type="Texture2D" uid="uid://p002xro3j25q" path="res://assets/Nazim/knight.png" id="1_dvkvg"]
 [ext_resource type="Script" uid="uid://dkiuvdfc5xx72" path="res://scenes/liste_stats.gd" id="1_nvck6"]
-[ext_resource type="Texture2D" uid="uid://dchldi4oyb40d" path="res://assets/1.Energy.png" id="2_j5jco"]
-[ext_resource type="FontFile" uid="uid://m4kefosdgugi" path="res://assets/PressStart2P-Regular.ttf" id="2_kwc6j"]
-[ext_resource type="Texture2D" uid="uid://dghip7g53c702" path="res://assets/hbp_red.png" id="2_nvck6"]
-[ext_resource type="Texture2D" uid="uid://cw7i3ue3afygd" path="res://assets/2.Weight.png" id="6_j5jco"]
-[ext_resource type="Texture2D" uid="uid://ogxtblerl273" path="res://assets/3.Mental.png" id="7_j5jco"]
+[ext_resource type="Texture2D" uid="uid://dchldi4oyb40d" path="res://assets/Nazim/1.Energy.png" id="2_j5jco"]
+[ext_resource type="FontFile" uid="uid://m4kefosdgugi" path="res://assets/Nazim/PressStart2P-Regular.ttf" id="2_kwc6j"]
+[ext_resource type="Texture2D" uid="uid://dghip7g53c702" path="res://assets/Nazim/hbp_red.png" id="2_nvck6"]
+[ext_resource type="Texture2D" uid="uid://cw7i3ue3afygd" path="res://assets/Nazim/2.Weight.png" id="6_j5jco"]
+[ext_resource type="Texture2D" uid="uid://ogxtblerl273" path="res://assets/Nazim/3.Mental.png" id="7_j5jco"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -27,6 +28,12 @@ grow_vertical = 2
 [node name="VBoxContainerLeft" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("1_dvkvg")
 
 [node name="VBoxContainerRight" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
