@@ -34,7 +34,7 @@ func afficher_scene(scene_name: String):
 	# Charger l'image de fond
 	var background_path = "res://assets/illustrations/blackBG.jpeg"
 	if scene_name == "petit_dejeuner":
-		background_path = "res://assets/illustrations/dejeuner.webp"
+		background_path = "res://assets/illustrations/ptit_dej_oui_non.png"
 	elif scene_name == "reveil":
 		background_path = "res://assets/illustrations/shot_or_no_shot.png"
 	
@@ -137,30 +137,28 @@ var scenes_data = {
 		]
 	},
 	
-	
 	"petit_dejeuner": {
 		"texte": [
-			"Vous prenez un bon petit déjeuner.",
-			"Vous vous sentez prêt pour la journée."
+			"Tu descends dans la cuisine...",
+			"Quel choix fais-tu ?"
 		],
 		"choix": [
-			{"texte": "Prendre un bon petit déjeuner", "next": "petit_dejeuner"},
-			{"texte": "Faire un petit exercice physique", "next": "exercice"},
-			{"texte": "Sortir pour un gros exercice physique", "next": "course"}
+			{"texte": "Prendre un bon petit déjeuner", "next": "choix_ptit_dej"},
+			{"texte": "Non, je ne déjeune pas.", "next": "exercice"},
 		]
 	},
 	
-	
-	
-	"exercice": {
+	"choix_ptit_dej": {
 		"texte": [
-			"Vous faites un petit exercice physique.",
-			"Vous vous sentez réveillé et plein d'énergie."
+			"L'heure de déjeuner !",
+			"Que choisis-tu?"
 		],
 		"choix": [
-			{"texte": "Prendre un bon petit déjeuner", "next": "petit_dejeuner"},
-			{"texte": "Faire un petit exercice physique", "next": "exercice"},
-			{"texte": "Sortir pour un gros exercice physique", "next": "course"}
+			{"texte": "Combo Café-croissant", "next": "petit_dejeuner"},
+			{"texte": "Muesli aux fruits ", "next": "exercice"},
+			{"texte": "Œufs bacon", "next": "course"},
+			{"texte": "Café Tartine confiture ", "next": "course"}
+
 		]
 	},
 	
