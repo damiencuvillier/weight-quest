@@ -23,9 +23,9 @@ func _ready():
 		timer_ui.connect("transition_to_next_scene", Callable(self, "_on_transition_to_next_scene"))
 
 func update_player_abilities():
-	SPEED = StatsManager.get_stat_value("Weight") * 1.50
+	SPEED = max(StatsManager.get_stat_value("Weight") * 1.50,45)
 	JUMP_VELOCITY = -max(StatsManager.get_stat_value("Energy") * 8.60, 200)  # Higher energy = stronger jump
-	TIME_TO_COMPLETE = StatsManager.get_stat_value("MentalHealth") * 1
+	TIME_TO_COMPLETE = max(StatsManager.get_stat_value("MentalHealth"),30)
 
 
 
@@ -61,7 +61,7 @@ func _on_transition_to_next_scene():
 	go_to_next_scene()
 
 func go_to_next_scene():
-	var next_scene_path = "res://scenes/level2.tscn"
+	var next_scene_path = "res://scenes/choice2.tscn"
 	var next_scene = ResourceLoader.load(next_scene_path)
 	if next_scene:
 		get_tree().change_scene_to_packed(next_scene)

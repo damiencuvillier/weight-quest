@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cmjsufk7euaj6"]
+[gd_scene load_steps=23 format=3 uid="uid://cmjsufk7euaj6"]
 
 [ext_resource type="Script" uid="uid://dyc6tr5rvwk3q" path="res://scripts/game_manager.gd" id="1_e3sih"]
 [ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_2y5yt"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://d36yhut5bpt6g" path="res://scripts/next_level.gd" id="10_d3jkd"]
 [ext_resource type="Texture2D" uid="uid://dbcc0ylhbquej" path="res://assets/sprites/flag_end.png" id="11_u3awl"]
 [ext_resource type="PackedScene" uid="uid://d12nftw40ayh0" path="res://scenes/TimerUi.tscn" id="12_2ku1j"]
+[ext_resource type="PackedScene" uid="uid://ywrsm286o25i" path="res://scenes/JaugeUi.tscn" id="13_f31uk"]
 
 [sub_resource type="Animation" id="Animation_apgth"]
 length = 0.001
@@ -3379,7 +3380,9 @@ position = Vector2(529, 81)
 position = Vector2(32, 9)
 
 [node name="Platform2" parent="Platforms" instance=ExtResource("5_7gny6")]
+visibility_layer = 2
 position = Vector2(370, 52)
+scale = Vector2(0.1, 0.1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform2"]
 libraries = {
@@ -3426,10 +3429,12 @@ visible = false
 position = Vector2(584, -108)
 
 [node name="Killzone" parent="." instance=ExtResource("7_6dial")]
-position = Vector2(141, 154)
+position = Vector2(208, 147)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(47, -23)
+visibility_layer = 2
+position = Vector2(-216, 19)
+scale = Vector2(0.1, 0.1)
 shape = SubResource("WorldBoundaryShape2D_x2xxo")
 
 [node name="TileMap_1" type="TileMap" parent="."]
@@ -3443,11 +3448,24 @@ layer_1/tile_data = PackedInt32Array(196609, 0, 0, 196610, 0, 0, 393215, 0, 0, 3
 [node name="TimerUi" parent="." instance=ExtResource("12_2ku1j")]
 layer = 4
 
+[node name="Control" parent="TimerUi" instance=ExtResource("13_f31uk")]
+visibility_layer = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 20.0
+offset_top = 130.0
+offset_right = 791.0
+offset_bottom = 684.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.35, 0.35)
+
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("9_1s4pk")]
 position = Vector2(34, 37)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -7)
+position = Vector2(-7, -2)
 zoom = Vector2(4, 4)
 limit_bottom = 120
 limit_smoothed = true
