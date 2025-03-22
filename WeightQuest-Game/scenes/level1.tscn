@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dtrbka1ef726o" path="res://scenes/killzone.tscn" id="7_6dial"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="8_7nomh"]
 [ext_resource type="PackedScene" uid="uid://dqnaqj8yb6hwd" path="res://scenes/player.tscn" id="9_1s4pk"]
-[ext_resource type="Script" uid="uid://b0ehrfdicp503" path="res://scripts/next_level.gd" id="10_d3jkd"]
+[ext_resource type="Script" uid="uid://d36yhut5bpt6g" path="res://scripts/next_level.gd" id="10_d3jkd"]
 [ext_resource type="Texture2D" uid="uid://dbcc0ylhbquej" path="res://assets/sprites/flag_end.png" id="11_u3awl"]
 [ext_resource type="PackedScene" uid="uid://d12nftw40ayh0" path="res://scenes/TimerUi.tscn" id="12_2ku1j"]
 

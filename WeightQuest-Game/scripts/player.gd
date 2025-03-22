@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 var SPEED = 130.0
 var JUMP_VELOCITY = -10.0
-var TIME_TO_COMPLETE = 5  # Total time to complete the level in seconds
+var TIME_TO_COMPLETE = 100  # Total time to complete the level in seconds
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -83,7 +83,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-@onready var timer_ui = $"../TimerUi"
+@onready var timer_ui: CanvasLayer = $"../TimerUi"
+
+
+
 func _ready():
 	print("TimerUI node:", timer_ui)
 	if timer_ui == null:

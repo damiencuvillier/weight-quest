@@ -10,10 +10,17 @@ script = ExtResource("1_chix4")
 [node name="Label" type="Label" parent="."]
 visibility_layer = 2
 anchors_preset = -1
-offset_left = 21.0
-offset_top = 36.0
-offset_right = 41.0
-offset_bottom = 60.0
+anchor_left = 0.08
+anchor_top = 0.131
+anchor_right = 0.084
+anchor_bottom = 0.131
+offset_left = -81.16
+offset_top = -66.888
+offset_right = 86.232
+offset_bottom = 67.112
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 uppercase = true
 
@@ -31,9 +38,11 @@ offset_bottom = 76.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.808137, 3.32102e-06, 4.81307e-07, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
