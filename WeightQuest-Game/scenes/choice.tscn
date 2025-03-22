@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://kpkjr7esspnf"]
+[gd_scene load_steps=12 format=3 uid="uid://kpkjr7esspnf"]
 
 [ext_resource type="Script" path="res://scenes/choice.gd" id="1_ehobt"]
 [ext_resource type="Texture2D" uid="uid://kmwnay4dinfn" path="res://assets/Chocolate - Retro Textbox 01/textbox.png" id="2_0gp37"]
 [ext_resource type="Texture2D" uid="uid://frnqr5so351k" path="res://assets/illustrations/blackBG.jpeg" id="2_76loj"]
+[ext_resource type="Script" uid="uid://dkiuvdfc5xx72" path="res://scenes/liste_stats.gd" id="4_e3iho"]
+[ext_resource type="Texture2D" uid="uid://dchldi4oyb40d" path="res://assets/Nazim/1.Energy.png" id="5_a6een"]
+[ext_resource type="FontFile" uid="uid://m4kefosdgugi" path="res://assets/Nazim/PressStart2P-Regular.ttf" id="6_s4tiv"]
+[ext_resource type="Texture2D" uid="uid://pofl75gurujw" path="res://assets/Nazim/hbp_under.png" id="7_j0vka"]
+[ext_resource type="Texture2D" uid="uid://dghip7g53c702" path="res://assets/Nazim/hbp_red.png" id="8_1kal5"]
+[ext_resource type="Texture2D" uid="uid://cw7i3ue3afygd" path="res://assets/Nazim/2.Weight.png" id="9_dhnu8"]
+[ext_resource type="Texture2D" uid="uid://ogxtblerl273" path="res://assets/Nazim/3.Mental.png" id="10_pjejm"]
+[ext_resource type="Texture2D" uid="uid://dopbne7jiyseh" path="res://assets/illustrations/alloDoc.png" id="11_a6een"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -15,7 +23,7 @@ script = ExtResource("1_ehobt")
 
 [node name="BlackBg" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(577.5, 324.5)
+position = Vector2(579, 325)
 scale = Vector2(3.83667, 3.875)
 texture = ExtResource("2_76loj")
 
@@ -71,3 +79,123 @@ theme_override_font_sizes/font_size = 19
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 19
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 33.0
+offset_right = 81.0
+offset_bottom = 73.0
+scale = Vector2(5.45164, 6.03354)
+color = Color(0, 0, 0, 0.592157)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 34.0
+offset_right = 82.0
+offset_bottom = 74.0
+scale = Vector2(5.24031, 5.25625)
+
+[node name="VBoxContainerRight" type="VBoxContainer" parent="RichTextLabel"]
+layout_mode = 0
+offset_left = 3.23067
+offset_top = 1.83375
+offset_right = 557.231
+offset_bottom = 422.834
+scale = Vector2(0.061948, 0.0942663)
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="CenterContainer" type="CenterContainer" parent="RichTextLabel/VBoxContainerRight"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Liste Stats" type="VBoxContainer" parent="RichTextLabel/VBoxContainerRight/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+script = ExtResource("4_e3iho")
+
+[node name="Energy" type="VBoxContainer" parent="RichTextLabel/VBoxContainerRight/CenterContainer/Liste Stats"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="TextureRect2" type="TextureRect" parent="RichTextLabel/VBoxContainerRight/CenterContainer/Liste Stats/Energy"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_a6een")
+
+[node name="Label" type="Label" parent="RichTextLabel/VBoxContainerRight/CenterContainer/Liste Stats/Energy"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_s4tiv")
+theme_override_font_sizes/font_size = 40
+text = "Energie"
+horizontal_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="RichTextLabel/VBoxContainerRight/CenterContainer/Liste Stats/Energy"]
+custom_minimum_size = Vector2(460.8, 32.4)
+layout_mode = 2
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("7_j0vka")
+texture_progress = ExtResource("8_1kal5")
+
+[node name="Weight" type="VBoxContainer" parent="RichTextLabel/VBoxContainerRight/CenterContainer/Liste Stats"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="TextureRect" type="TextureRect" parent="RichTextLabel/VBoxContainerRight/CenterContainer/Liste Stats/Weight"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("9_dhnu8")
+
+[node name="Label" type="Label" parent="RichTextLabel/VBoxContainerRight/CenterContainer/Liste Stats/Weight"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_s4tiv")
+theme_override_font_sizes/font_size = 40
+text = "Equilibre"
+horizontal_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="RichTextLabel/VBoxContainerRight/CenterContainer/Liste Stats/Weight"]
+custom_minimum_size = Vector2(460.8, 32.4)
+layout_mode = 2
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("7_j0vka")
+texture_progress = ExtResource("8_1kal5")
+
+[node name="MentalHealth" type="VBoxContainer" parent="RichTextLabel/VBoxContainerRight/CenterContainer/Liste Stats"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="TextureRect2" type="TextureRect" parent="RichTextLabel/VBoxContainerRight/CenterContainer/Liste Stats/MentalHealth"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("10_pjejm")
+
+[node name="Label" type="Label" parent="RichTextLabel/VBoxContainerRight/CenterContainer/Liste Stats/MentalHealth"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_s4tiv")
+theme_override_font_sizes/font_size = 40
+text = "Santé mentale"
+horizontal_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="RichTextLabel/VBoxContainerRight/CenterContainer/Liste Stats/MentalHealth"]
+custom_minimum_size = Vector2(460.8, 32.4)
+layout_mode = 2
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("7_j0vka")
+texture_progress = ExtResource("8_1kal5")
+
+[node name="AlloDoc" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(60, 62)
+scale = Vector2(0.147251, 0.147251)
+texture = ExtResource("11_a6een")
