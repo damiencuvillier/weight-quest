@@ -3310,6 +3310,7 @@ unique_name_in_owner = true
 script = ExtResource("1_e3sih")
 
 [node name="ScoreLabel" type="Label" parent="GameManager"]
+visible = false
 offset_left = 513.0
 offset_top = -144.0
 offset_right = 618.0
@@ -3324,6 +3325,7 @@ autowrap_mode = 2
 [node name="Labels" type="Node" parent="."]
 
 [node name="Label" type="Label" parent="Labels"]
+visible = false
 offset_left = -119.0
 offset_top = 82.0
 offset_right = -23.0
@@ -3334,6 +3336,7 @@ theme_override_font_sizes/font_size = 8
 text = "Space to jump."
 
 [node name="Label2" type="Label" parent="Labels"]
+visible = false
 offset_left = 368.0
 offset_top = 78.0
 offset_right = 464.0
@@ -3344,6 +3347,7 @@ theme_override_font_sizes/font_size = 8
 text = "Falling hurts..."
 
 [node name="Label3" type="Label" parent="Labels"]
+visible = false
 offset_left = 704.0
 offset_top = -48.0
 offset_right = 800.0
@@ -3354,6 +3358,7 @@ theme_override_font_sizes/font_size = 8
 text = "Almost there..."
 
 [node name="Label4" type="Label" parent="Labels"]
+visible = false
 offset_left = 520.0
 offset_top = -163.0
 offset_right = 616.0
@@ -3365,6 +3370,7 @@ text = "Great job!"
 horizontal_alignment = 1
 
 [node name="Slime" parent="." instance=ExtResource("4_go7sj")]
+visible = false
 position = Vector2(529, 81)
 
 [node name="Platforms" type="Node" parent="."]
@@ -3384,37 +3390,46 @@ autoplay = "move"
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("6_2aecg")]
+visible = false
 position = Vector2(73, 68)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("6_2aecg")]
+visible = false
 position = Vector2(217, 69)
 
 [node name="Coin3" parent="Coins" instance=ExtResource("6_2aecg")]
+visible = false
 position = Vector2(232, 69)
 
 [node name="Coin4" parent="Coins" instance=ExtResource("6_2aecg")]
+visible = false
 position = Vector2(104, -44)
 
 [node name="Coin5" parent="Coins" instance=ExtResource("6_2aecg")]
+visible = false
 position = Vector2(503, 37)
 
 [node name="Coin6" parent="Coins" instance=ExtResource("6_2aecg")]
+visible = false
 position = Vector2(757, -25)
 
 [node name="Coin7" parent="Coins" instance=ExtResource("6_2aecg")]
+visible = false
 position = Vector2(776, -25)
 
 [node name="Coin8" parent="Coins" instance=ExtResource("6_2aecg")]
+visible = false
 position = Vector2(795, -25)
 
 [node name="Coin9" parent="Coins" instance=ExtResource("6_2aecg")]
+visible = false
 position = Vector2(584, -108)
 
 [node name="Killzone" parent="." instance=ExtResource("7_6dial")]
-position = Vector2(78, 144)
+position = Vector2(141, 154)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(45, 6)
+position = Vector2(47, -23)
 shape = SubResource("WorldBoundaryShape2D_x2xxo")
 
 [node name="TileMap_1" type="TileMap" parent="."]
