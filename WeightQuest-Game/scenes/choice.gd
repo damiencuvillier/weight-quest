@@ -36,7 +36,9 @@ func afficher_scene(scene_name: String):
 	if scene_name == "petit_dejeuner":
 		background_path = "res://assets/illustrations/dejeuner.webp"
 	elif scene_name == "reveil":
-		background_path = "res://assets/illustrations/reveil.webp"
+		background_path = "res://assets/illustrations/shot_or_no_shot.png"
+	
+		
 	
 	black_bg.texture = load(background_path) as Texture2D
 	ajuster_taille_background()
@@ -127,7 +129,19 @@ var scenes_data = {
 		"texte": [
 			"Nous sommes un lundi matin.",
 			"Vous vous réveillez doucement après avoir éteint votre réveil...",
-			"Que voulez-vous faire maintenant ?"
+			"Que veux-tu faire ?"
+		],
+		"choix": [
+			{"texte": "Je veux prendre le traitement GLP-1 (Wegovy, Ozempic...).", "next": "petit_dejeuner"},
+			{"texte": "Je ne veux pas prendre le traitement.", "next": "exercice"},
+		]
+	},
+	
+	
+	"petit_dejeuner": {
+		"texte": [
+			"Vous prenez un bon petit déjeuner.",
+			"Vous vous sentez prêt pour la journée."
 		],
 		"choix": [
 			{"texte": "Prendre un bon petit déjeuner", "next": "petit_dejeuner"},
@@ -135,22 +149,33 @@ var scenes_data = {
 			{"texte": "Sortir pour un gros exercice physique", "next": "course"}
 		]
 	},
-	"petit_dejeuner": {
-		"texte": [
-			"Vous prenez un bon petit déjeuner.",
-			"Vous vous sentez prêt pour la journée."
-		]
-	},
+	
+	
+	
 	"exercice": {
 		"texte": [
 			"Vous faites un petit exercice physique.",
 			"Vous vous sentez réveillé et plein d'énergie."
+		],
+		"choix": [
+			{"texte": "Prendre un bon petit déjeuner", "next": "petit_dejeuner"},
+			{"texte": "Faire un petit exercice physique", "next": "exercice"},
+			{"texte": "Sortir pour un gros exercice physique", "next": "course"}
 		]
 	},
+	
+	
+	
+	
 	"course": {
 		"texte": [
 			"Vous sortez pour un gros exercice physique.",
 			"L'air frais sur votre visage vous revigore."
+		],
+		"choix": [
+			{"texte": "Prendre un bon petit déjeuner", "next": "petit_dejeuner"},
+			{"texte": "Faire un petit exercice physique", "next": "exercice"},
+			{"texte": "Sortir pour un gros exercice physique", "next": "course"}
 		]
 	}
 }
