@@ -23,9 +23,9 @@ func _ready():
 		timer_ui.connect("transition_to_next_scene", Callable(self, "_on_transition_to_next_scene"))
 
 func update_player_abilities():
-	SPEED = StatsManager.get_stat_value("Weight")
-	JUMP_VELOCITY = -max(StatsManager.get_stat_value("Energy") * 5, 200)  # Higher energy = stronger jump
-	TIME_TO_COMPLETE = StatsManager.get_stat_value("MentalHealth")
+	SPEED = StatsManager.get_stat_value("Weight") * 1.50
+	JUMP_VELOCITY = -max(StatsManager.get_stat_value("Energy") * 8.60, 200)  # Higher energy = stronger jump
+	TIME_TO_COMPLETE = StatsManager.get_stat_value("MentalHealth") * 1
 
 
 

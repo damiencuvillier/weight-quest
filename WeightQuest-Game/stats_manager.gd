@@ -1,9 +1,9 @@
 extends Node
 
 var stats := {
-	"Weight": 10.0,
-	"Energy": 99.0,
-	"MentalHealth": 99.0
+	"Weight": 66.0,
+	"Energy": 33.0,
+	"MentalHealth": 33.0
 }
 
 func get_stat_value(stat_name: String) -> int:
