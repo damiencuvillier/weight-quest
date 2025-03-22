@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://cuv4vme4rwno0"]
 
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_l4ihi"]
+[ext_resource type="Script" uid="uid://dyc6tr5rvwk3q" path="res://scripts/game_manager.gd" id="1_l4ihi"]
 [ext_resource type="PackedScene" uid="uid://dqnaqj8yb6hwd" path="res://scenes/player.tscn" id="1_rbmkf"]
 [ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_nlliu"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="2_r1crl"]
@@ -212,8 +212,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xuk5v"]
 _data = {
-"RESET": SubResource("Animation_apgth"),
-"move": SubResource("Animation_bm7kf")
+&"RESET": SubResource("Animation_apgth"),
+&"move": SubResource("Animation_bm7kf")
 }
 
 [node name="Game" type="Node2D"]

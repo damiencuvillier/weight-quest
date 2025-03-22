@@ -5,12 +5,12 @@
 [ext_resource type="Script" uid="uid://dkiuvdfc5xx72" path="res://scenes/liste_stats.gd" id="1_nvck6"]
 [ext_resource type="Texture2D" uid="uid://dchldi4oyb40d" path="res://assets/Nazim/1.Energy.png" id="2_j5jco"]
 [ext_resource type="FontFile" uid="uid://m4kefosdgugi" path="res://assets/Nazim/PressStart2P-Regular.ttf" id="2_kwc6j"]
-[ext_resource type="Script" uid="uid://btnd0wfpj8ow1" path="res://scenes/v_box_container2.gd" id="2_n6hs0"]
+[ext_resource type="Script" path="res://scenes/v_box_container2.gd" id="2_n6hs0"]
 [ext_resource type="Texture2D" uid="uid://dghip7g53c702" path="res://assets/Nazim/hbp_red.png" id="2_nvck6"]
 [ext_resource type="Texture2D" uid="uid://cw7i3ue3afygd" path="res://assets/Nazim/2.Weight.png" id="6_j5jco"]
 [ext_resource type="Texture2D" uid="uid://ogxtblerl273" path="res://assets/Nazim/3.Mental.png" id="7_j5jco"]
 
-[node name="Control" type="Control"]
+[node name="Control2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

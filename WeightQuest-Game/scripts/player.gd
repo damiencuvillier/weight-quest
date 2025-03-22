@@ -23,12 +23,12 @@ func _ready():
 		timer_ui.connect("transition_to_next_scene", Callable(self, "_on_transition_to_next_scene"))
 
 func update_player_abilities():
-	SPEED = max(StatsManager.get_stat_value("Weight") * 1.50,45)
-	JUMP_VELOCITY = -max(StatsManager.get_stat_value("Energy") * 8.60, 200)  # Higher energy = stronger jump
-	TIME_TO_COMPLETE = max(StatsManager.get_stat_value("MentalHealth"),30)
+	SPEED = max(StatsManager.get_stat_value("Weight") * 1.0,30)
+	JUMP_VELOCITY = -max(StatsManager.get_stat_value("Energy") * 8.60, 300)  # Higher energy = stronger jump
+	TIME_TO_COMPLETE = max(StatsManager.get_stat_value("MentalHealth"),200)
 
 
-
+ 
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta

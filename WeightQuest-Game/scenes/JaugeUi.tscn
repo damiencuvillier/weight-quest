@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ywrsm286o25i"]
 
-[ext_resource type="Texture2D" uid="uid://p002xro3j25q" path="res://assets/Nazim/knight.png" id="1_7u2gi"]
+[ext_resource type="Texture2D" uid="uid://dlin8h4qb6yvu" path="res://assets/Nazim/knight.png" id="1_7u2gi"]
 [ext_resource type="Script" uid="uid://dkiuvdfc5xx72" path="res://scenes/liste_stats.gd" id="2_uejvw"]
 [ext_resource type="FontFile" uid="uid://m4kefosdgugi" path="res://assets/Nazim/PressStart2P-Regular.ttf" id="4_845ag"]
 [ext_resource type="Texture2D" uid="uid://pofl75gurujw" path="res://assets/Nazim/hbp_under.png" id="5_2kmvn"]
