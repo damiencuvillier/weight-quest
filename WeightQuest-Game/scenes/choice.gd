@@ -174,7 +174,7 @@ var scenes_data = {
 			"Que souhaites-tu faire ?"
 		],
 		"choix": [
-			{"texte": "Je veux prendre le traitement GLP-1 (Wegovy, Ozempic...).", "next": "reveil", "effets": {"Weight": -1, "Energy": 1, "MentalHealth": -2, "Ozempic": true}},
+			{"texte": "Je veux prendre le traitement GLP-1 (Wegovy, Ozempic...).", "next": "reveil", "effets": {"Weight": -50, "Energy": 1, "MentalHealth": -2, "Ozempic": true}},
 			{"texte": "Je ne veux pas prendre le traitement.", "next": "reveil", "effets": {"Weight": 0, "Energy": 0, "MentalHealth": 1, "Ozempic": false}},
 		]	
 	},
