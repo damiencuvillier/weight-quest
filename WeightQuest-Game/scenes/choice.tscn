@@ -80,15 +80,25 @@ visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 19
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 33.0
+offset_right = 81.0
+offset_bottom = 73.0
+scale = Vector2(5.45164, 6.03354)
+color = Color(0, 0, 0, 0.592157)
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 932.0
-offset_top = 20.0
-offset_right = 972.0
-offset_bottom = 60.0
+offset_left = 42.0
+offset_top = 34.0
+offset_right = 82.0
+offset_bottom = 74.0
 scale = Vector2(5.24031, 5.25625)
 
 [node name="VBoxContainerRight" type="VBoxContainer" parent="RichTextLabel"]
+layout_mode = 0
 offset_left = 3.23067
 offset_top = 1.83375
 offset_right = 557.231
@@ -185,6 +195,7 @@ texture_under = ExtResource("7_j0vka")
 texture_progress = ExtResource("8_1kal5")
 
 [node name="AlloDoc" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(60, 62)
 scale = Vector2(0.147251, 0.147251)
 texture = ExtResource("11_a6een")

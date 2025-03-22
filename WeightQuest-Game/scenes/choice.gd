@@ -100,7 +100,7 @@ func afficher_choix(choix_textes: Array):
 
 # ✅ DÉCONNECTER LES ANCIENS CHOIX
 func deconnecter_choix():
-	for bouton in [choice_1_button, choice_2_button, choice_3_button, choice_4_button]:  # ✅ Ajout du 4e bouton
+	for bouton in [choice_1_button, choice_2_button, choice_3_button, choice_4_button]: 
 		for conn in bouton.get_signal_connection_list("pressed"):
 			bouton.disconnect("pressed", conn.callable)
 
@@ -112,13 +112,14 @@ func _on_choice_pressed(choix_index: int, next_scene: String):
 	var choix = scene["choix"][choix_index - 1]
 	if "effets" in choix:
 		appliquer_effets(choix["effets"])
+		
+	await get_tree().create_timer(0.5).timeout
 
 	# Vérifie si la scène suivante existe
 	if scenes_data.has(next_scene):
 		afficher_scene(next_scene)
 	else:
 		afficher_scene("game")
-
 
 
 # ✅ AJUSTER L'IMAGE DE FOND
@@ -208,7 +209,7 @@ var scenes_data = {
 			"Qu'allez-vous faire ?"
 		],
 		"choix": [
-			{"texte": "Regarder la tété et grignoter.", "next": "", "effets": {"Weight": -2, "Energy": 1, "MentalHealth": -2, "Ozempic": false}},
+			{"texte": "Regarder la tété et grignoter.", "next": "", "effets": {"Weight": -30, "Energy": 5, "MentalHealth": -20, "Ozempic": false}},
 			{"texte": "Pratiquer une activité physique de mon choix", "next": "activité_physique"}
 		]
 	},
