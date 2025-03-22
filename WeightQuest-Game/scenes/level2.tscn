@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://c8etc3xrtdnwq"]
+[gd_scene load_steps=21 format=3 uid="uid://c8etc3xrtdnwq"]
 
 [ext_resource type="Script" uid="uid://dyc6tr5rvwk3q" path="res://scripts/game_manager.gd" id="1_xa7n4"]
 [ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_bo4dx"]
 [ext_resource type="PackedScene" uid="uid://dqnaqj8yb6hwd" path="res://scenes/player.tscn" id="3_76toy"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="4_8g4ke"]
+[ext_resource type="PackedScene" uid="uid://ywrsm286o25i" path="res://scenes/JaugeUi.tscn" id="4_56gwk"]
 [ext_resource type="PackedScene" uid="uid://d2w2i5h0lhc6l" path="res://scenes/slime.tscn" id="5_56gwk"]
 [ext_resource type="PackedScene" uid="uid://bgv5v2fxqlswe" path="res://scenes/platform.tscn" id="6_ve5ok"]
 [ext_resource type="PackedScene" uid="uid://pqp5qaw561fr" path="res://scenes/coin.tscn" id="7_cleqw"]
@@ -244,6 +245,19 @@ autowrap_mode = 2
 
 [node name="TimerUi" parent="." instance=ExtResource("12_8g4ke")]
 layer = 4
+
+[node name="Control" parent="TimerUi" instance=ExtResource("4_56gwk")]
+visibility_layer = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 20.0
+offset_top = 130.0
+offset_right = 760.0
+offset_bottom = 665.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.35, 0.35)
 
 [node name="Player" parent="." instance=ExtResource("3_76toy")]
 position = Vector2(34, 37)

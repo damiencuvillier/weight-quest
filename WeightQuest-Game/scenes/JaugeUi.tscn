@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://ywrsm286o25i"]
+
+[ext_resource type="Texture2D" uid="uid://p002xro3j25q" path="res://assets/Nazim/knight.png" id="1_7u2gi"]
+[ext_resource type="Script" uid="uid://dkiuvdfc5xx72" path="res://scenes/liste_stats.gd" id="2_uejvw"]
+[ext_resource type="FontFile" uid="uid://m4kefosdgugi" path="res://assets/Nazim/PressStart2P-Regular.ttf" id="4_845ag"]
+[ext_resource type="Texture2D" uid="uid://pofl75gurujw" path="res://assets/Nazim/hbp_under.png" id="5_2kmvn"]
+[ext_resource type="Texture2D" uid="uid://dghip7g53c702" path="res://assets/Nazim/hbp_red.png" id="6_nciik"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainerLeft" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainerLeft"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("1_7u2gi")
+
+[node name="VBoxContainerRight" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainerRight"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Liste Stats" type="VBoxContainer" parent="HBoxContainer/VBoxContainerRight/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+script = ExtResource("2_uejvw")
+
+[node name="Energy" type="VBoxContainer" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/Energy"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_845ag")
+theme_override_font_sizes/font_size = 40
+text = "Energie"
+horizontal_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/Energy"]
+custom_minimum_size = Vector2(460.8, 32.4)
+layout_mode = 2
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_2kmvn")
+texture_progress = ExtResource("6_nciik")
+
+[node name="Weight" type="VBoxContainer" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/Weight"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_845ag")
+theme_override_font_sizes/font_size = 40
+text = "Equilibre"
+horizontal_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/Weight"]
+custom_minimum_size = Vector2(460.8, 32.4)
+layout_mode = 2
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_2kmvn")
+texture_progress = ExtResource("6_nciik")
+
+[node name="MentalHealth" type="VBoxContainer" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/MentalHealth"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_845ag")
+theme_override_font_sizes/font_size = 40
+text = "Santé mentale"
+horizontal_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/VBoxContainerRight/CenterContainer/Liste Stats/MentalHealth"]
+custom_minimum_size = Vector2(460.8, 32.4)
+layout_mode = 2
+value = 25.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_2kmvn")
+texture_progress = ExtResource("6_nciik")
