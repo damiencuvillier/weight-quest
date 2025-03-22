@@ -7,15 +7,20 @@ extends Control
 @onready var choice_1_button: Button = $"Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer/Choice1 Button"
 @onready var choice_2_button: Button = $"Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer/Choice2 Button"
 @onready var choice_3_button: Button = $"Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer/Choice3 Button"
+@onready var choice_4_button: Button = $"Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer/Choice4 Button"
 @onready var black_bg: Sprite2D = %BlackBg
 
+const StatsManager = preload("res://stats_manager.gd")
+@onready var stats = get_node("/root/StatsManager")
+
+	
 # ✅ VARIABLES DE JEU
 var choix_joueur: int = 0
 var affichage_termine = false
 var interrompre_affichage = false  
 var index_texte = 0  # Suivi du texte actuellement affiché
 var texte_scene = []
-var current_scene = "reveil"
+var current_scene = "shot"
 var scene = {}  # Contiendra les données de la scène
 
 # ✅ INITIALISATION
@@ -33,11 +38,18 @@ func afficher_scene(scene_name: String):
 
 	# Charger l'image de fond
 	var background_path = "res://assets/illustrations/blackBG.jpeg"
-	if scene_name == "petit_dejeuner":
-		background_path = "res://assets/illustrations/ptit_dej_oui_non.png"
+
+	if scene_name == "shot":
+		background_path = "res://assets/illustrations/ozempic_ornot.webp"
 	elif scene_name == "reveil":
-		background_path = "res://assets/illustrations/shot_or_no_shot.png"
-	
+		background_path = "res://assets/illustrations/reveilMieux.webp"
+	elif scene_name == "choix_activité" : 
+		background_path = "res://assets/illustrations/quelleactivité.webp"
+	elif scene_name == "petit_dejeuner" : 
+		background_path = "res://assets/illustrations/petitdej.webp"	
+	elif scene_name == "activité_physique" : 
+		background_path = "res://assets/illustrations/activitéphysique.webp"
+		
 		
 	
 	black_bg.texture = load(background_path) as Texture2D
@@ -72,22 +84,23 @@ func afficher_choix(choix_textes: Array):
 	deconnecter_choix()
 
 	# Cacher tous les boutons au départ
-	for bouton in [choice_1_button, choice_2_button, choice_3_button]:
+	for bouton in [choice_1_button, choice_2_button, choice_3_button, choice_4_button]:
 		bouton.hide()
 
 	# Afficher les choix disponibles
-	for i in range(min(choix_textes.size(), 3)):
-		var bouton = [choice_1_button, choice_2_button, choice_3_button][i]
+	for i in range(min(choix_textes.size(), 4)):  # ✅ Gérer jusqu'à 4 choix
+		var bouton = [choice_1_button, choice_2_button, choice_3_button, choice_4_button][i]
 		bouton.text = choix_textes[i]["texte"]
 		print(choix_textes[i]["texte"])
 		bouton.show()
 		bouton.pressed.connect(_on_choice_pressed.bind(i + 1, choix_textes[i]["next"]))
 
 	choix_container.show()
+	choix_container.show()
 
 # ✅ DÉCONNECTER LES ANCIENS CHOIX
 func deconnecter_choix():
-	for bouton in [choice_1_button, choice_2_button, choice_3_button]:
+	for bouton in [choice_1_button, choice_2_button, choice_3_button, choice_4_button]:  # ✅ Ajout du 4e bouton
 		for conn in bouton.get_signal_connection_list("pressed"):
 			bouton.disconnect("pressed", conn.callable)
 
@@ -95,7 +108,18 @@ func deconnecter_choix():
 func _on_choice_pressed(choix_index: int, next_scene: String):
 	choix_joueur = choix_index
 	choix_container.hide()
-	afficher_scene(next_scene)
+
+	var choix = scene["choix"][choix_index - 1]
+	if "effets" in choix:
+		appliquer_effets(choix["effets"])
+
+	# Vérifie si la scène suivante existe
+	if scenes_data.has(next_scene):
+		afficher_scene(next_scene)
+	else:
+		afficher_scene("game")
+
+
 
 # ✅ AJUSTER L'IMAGE DE FOND
 func ajuster_taille_background():
@@ -122,9 +146,38 @@ func _input(event):
 					afficher_choix(scene["choix"])
 				else:
 					print("Fin du scénario")
+			if current_scene == "game":
+				print("OK")
+				get_tree().change_scene_to_file("C:/Users/qjkin/documents/WeightQuestFirstGame/weight-quest/WeightQuest-Game/scenes/game.tscn")	
+
+func appliquer_effets(effets: Dictionary):
+	for stat in effets.keys():
+		if stat == "Ozempic":
+			stats.set_stat_value(stat, effets[stat])
+		else:
+			print("!!! ", stat)
+			print("new value :", stats.get_stat_value(stat), " + ", effets[stat] )
+			var new_value = stats.get_stat_value(stat) + effets[stat]
+			stats.set_stat_value(stat, new_value)
+
+	# Afficher correctement les stats après modification
+	print("Updated stats:")
+	for stat in stats.get_all_stats_keys():
+		print(stat, ":", stats.get_stat_value(stat))
+
+
 
 # ✅ SCÉNARIO & TEXTES
 var scenes_data = {
+	"shot": {
+		"texte": [
+			"Que souhaites-tu faire ?"
+		],
+		"choix": [
+			{"texte": "Je veux prendre le traitement GLP-1 (Wegovy, Ozempic...).", "next": "reveil", "effets": {"Weight": -1, "Energy": 1, "MentalHealth": -2, "Ozempic": true}},
+			{"texte": "Je ne veux pas prendre le traitement.", "next": "reveil", "effets": {"Weight": 0, "Energy": 0, "MentalHealth": 1, "Ozempic": false}},
+		]	
+	},
 	"reveil": {
 		"texte": [
 			"Nous sommes un lundi matin.",
@@ -132,8 +185,8 @@ var scenes_data = {
 			"Que veux-tu faire ?"
 		],
 		"choix": [
-			{"texte": "Je veux prendre le traitement GLP-1 (Wegovy, Ozempic...).", "next": "petit_dejeuner"},
-			{"texte": "Je ne veux pas prendre le traitement.", "next": "exercice"},
+			{"texte": "Prendre un déjeuner", "next": "petit_dejeuner", "effets": {}},
+			{"texte": "Je ne déjeune pas", "next": "choix_activité", "effets": {"Weight": 1, "Energy": -2, "MentalHealth": -1, "Ozempic": false}},
 		]
 	},
 	
@@ -143,37 +196,36 @@ var scenes_data = {
 			"Quel choix fais-tu ?"
 		],
 		"choix": [
-			{"texte": "Prendre un bon petit déjeuner", "next": "choix_ptit_dej"},
-			{"texte": "Non, je ne déjeune pas.", "next": "exercice"},
+			{"texte": "Café/Thé croissant", "next": "choix_activité", "effets": {"Weight": -1, "Energy": 1, "MentalHealth": 0, "Ozempic": false}},
+			{"texte": "Muesli aux fruits", "next": "choix_activité", "effets": {"Weight": 0, "Energy": 1, "MentalHealth": 2, "Ozempic": false}},
+			{"texte": "Œufs bacon", "next": "choix_activité", "effets": {"Weight": -2, "Energy": 2, "MentalHealth": -1, "Ozempic": false}},
+			{"texte": "Café/Thé Tartine confiture", "next": "choix_activité", "effets": {"Weight": 0, "Energy": 1, "MentalHealth": 0, "Ozempic": false}},
 		]
-	},
-	
-	"choix_ptit_dej": {
+	},		
+	"choix_activité": {
 		"texte": [
-			"L'heure de déjeuner !",
-			"Que choisis-tu?"
+			"Pas encore tout à fait reveillé, vous vous demandez ce que vous voudriez faire aujourd'hui.",
+			"Qu'allez-vous faire ?"
 		],
 		"choix": [
-			{"texte": "Combo Café-croissant", "next": "petit_dejeuner"},
-			{"texte": "Muesli aux fruits ", "next": "exercice"},
-			{"texte": "Œufs bacon", "next": "course"},
-			{"texte": "Café Tartine confiture ", "next": "course"}
-
+			{"texte": "Regarder la tété et grignoter.", "next": "", "effets": {"Weight": -2, "Energy": 1, "MentalHealth": -2, "Ozempic": false}},
+			{"texte": "Pratiquer une activité physique de mon choix", "next": "activité_physique"}
 		]
 	},
-	
-	
-	
-	
-	"course": {
+	"activité_physique": {
 		"texte": [
-			"Vous sortez pour un gros exercice physique.",
-			"L'air frais sur votre visage vous revigore."
+			"Vous vous préparez à faire une activité physique.",
+			"Quelle activité allez vous pratiquer ?"
 		],
 		"choix": [
-			{"texte": "Prendre un bon petit déjeuner", "next": "petit_dejeuner"},
-			{"texte": "Faire un petit exercice physique", "next": "exercice"},
-			{"texte": "Sortir pour un gros exercice physique", "next": "course"}
+			{"texte": "Une activité de la vie quotidienne (marche, ménage, jardinage, vélo électrique, …)", "next": "", "effets": {"Weight": 1, "Energy": 0, "MentalHealth": 0, "Ozempic": false}},
+			{"texte": "Une activité physique d’intensité modérée (vélo, natation, marche nordique, danse, Pilate, …)", "next": "activité", "effets": {"Weight": 2, "Energy": 1, "MentalHealth": 1, "Ozempic": false}},
+			{"texte": "Une activité physique intense (jogging, fitness cardio, sport de combat, sport de raquette, …) ", "next": "activité", "effets": {"Weight": 2, "Energy": -1, "MentalHealth": -1, "Ozempic": false}}
+		]
+	},
+	"game": {
+		"texte": [
+			"Un épreuve sauvage apparait !"
 		]
 	}
 }

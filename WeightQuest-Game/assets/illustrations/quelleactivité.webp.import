@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlin8h4qb6yvu"
-path="res://.godot/imported/knight.png-86edd1403b3361ce69cec2a143ce5634.ctex"
+uid="uid://5xxrg71rn3qr"
+path="res://.godot/imported/quelleactivité.webp-8c11f9d85200ccb773d11bfb69d46f4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Nazim/knight.png"
-dest_files=["res://.godot/imported/knight.png-86edd1403b3361ce69cec2a143ce5634.ctex"]
+source_file="res://assets/illustrations/quelleactivité.webp"
+dest_files=["res://.godot/imported/quelleactivité.webp-8c11f9d85200ccb773d11bfb69d46f4a.ctex"]
 
 [params]
 

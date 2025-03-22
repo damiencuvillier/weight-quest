@@ -26,7 +26,7 @@ texture = ExtResource("2_0gp37")
 
 [node name="DialogueBox Panel" type="Panel" parent="Textbox"]
 anchors_preset = -1
-anchor_top = -0.00701754
+anchor_top = 0.0175439
 anchor_bottom = 0.0175439
 offset_left = -526.0
 offset_top = -100.0
@@ -38,36 +38,31 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_left = 3.0
 offset_top = 4.0
-offset_right = 998.0
-offset_bottom = 196.0
+offset_right = 994.0
+offset_bottom = 187.0
 theme_override_font_sizes/normal_font_size = 27
 text = "Placeholder"
 
 [node name="ChoiceContainer VBoxContainer" type="VBoxContainer" parent="Textbox/DialogueBox Panel"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 37.0
-offset_right = 949.0
-offset_bottom = 189.0
+offset_left = 49.6987
+offset_top = 46.589
+offset_right = 952.699
+offset_bottom = 173.589
 alignment = 1
 
 [node name="Choice1 Button" type="Button" parent="Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer"]
 visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 19
+theme_override_font_sizes/font_size = 23
 text = "Placeholder"
 
 [node name="Choice2 Button" type="Button" parent="Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer"]
 visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 19
+theme_override_font_sizes/font_size = 23
 
 [node name="Choice3 Button" type="Button" parent="Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer"]
 visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 19
-
-[node name="Choice4 Button" type="Button" parent="Textbox/DialogueBox Panel/ChoiceContainer VBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 19
+theme_override_font_sizes/font_size = 23

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlin8h4qb6yvu"
-path="res://.godot/imported/knight.png-86edd1403b3361ce69cec2a143ce5634.ctex"
+uid="uid://bd0uk1r86h2bv"
+path="res://.godot/imported/ozempic_ornot.webp-868915e2dadd6fa4987c9007eb4656d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Nazim/knight.png"
-dest_files=["res://.godot/imported/knight.png-86edd1403b3361ce69cec2a143ce5634.ctex"]
+source_file="res://assets/illustrations/ozempic_ornot.webp"
+dest_files=["res://.godot/imported/ozempic_ornot.webp-868915e2dadd6fa4987c9007eb4656d9.ctex"]
 
 [params]
 
